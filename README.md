@@ -1,0 +1,3 @@
+- This is the click game name dot create with OOP create by the love of games
+- Demo: https://nicejjss.github.io/DOTS/
+- Use singleton cannot be use in iframe, must save in window Object like a propety

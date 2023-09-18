@@ -1,0 +1,75 @@
+@import url('../../../assests/css/index.css');
+
+#menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 25vh;
+}
+
+.menu-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* background-color: purple; */
+}
+
+.cicrle {
+    border-radius: 100%;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}
+
+#circle-1 {
+    background-color: red;
+    transform: translate(-50%, -50%);
+}
+
+#circle-2 {
+    background-color: blue;
+    right: 0;
+    transform: translate(50%, 0);
+    width: 500px;
+    height: 500px;
+}
+
+#circle-3 {
+    background-color: green;
+    transform: translate(-50%, 50%);
+    width: 1000px;
+    height: 1000px;
+}
+
+#circle-4 {
+    background-color: yellow;
+    right: 100px;
+    bottom: 100px;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+}
+
+#circle-5 {
+    background-color: purple;
+    transform: translate(100%, -50%);
+    width: 400px;
+    height: 400px;
+}
+
+.menu-components {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    list-style: none;
+}
+
+#game-title {
+    font-size: 60px;
+    font-weight: 900;
+}
