@@ -1,9 +1,6 @@
-import { backgroundMusic } from "../constants.js";
-import { GameInfo } from "./GameInfo.js";
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
-import { Music } from "./music/Music.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
-import { WindowTrait } from "./traits/WindowTrait.js";
+import { WindowTrait } from "../traits/WindowTrait.js";
 
 export class GameManager {
     //private
@@ -18,10 +15,10 @@ export class GameManager {
     }
 
     startBackgroundMusic() {
-        // let backgroundMusic = new BackgroundMusic();
-        // backgroundMusic.loop(true);
-        // backgroundMusic.autoPlay(true);
-        // backgroundMusic.changeVolume(1);
+        let backgroundMusic = new BackgroundMusic();
+        backgroundMusic.loop(true);
+        backgroundMusic.autoPlay(true);
+        backgroundMusic.changeVolume(0.03);
         WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
     }
 }

@@ -18,4 +18,9 @@ export class Scene {
     sceneLoad() {
         
     }
+
+    changeScene() {
+        let iframe = window.frameElement;
+        iframe.src = this.view;
+    }
 }

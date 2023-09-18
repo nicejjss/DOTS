@@ -1,5 +1,4 @@
-import { GameInfo } from "../GameInfo.js";
-import { WindowTrait } from "../traits/WindowTrait.js";
+// import { WindowTrait } from "../traits/WindowTrait.js";
 import { Scene } from "./Scene.js";
 
 export class GamePlayScene extends Scene {
@@ -8,7 +7,7 @@ export class GamePlayScene extends Scene {
     //Injectt Dot Object
     constructor() {
         super();
-        this.view = '../../view/gameRun.html';
+        this.view = '../../view/gamePlay.html';
         this.infor = window.parent.infor;
     }
 

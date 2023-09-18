@@ -1,13 +1,28 @@
 <link rel="stylesheet" href="./assests/css/StartScene.css">
-    <div class="menu-background">
-        <div id="circle-1" class="cicrle"></div>
-        <div id="circle-2" class="cicrle"></div>
-        <div id="circle-3" class="cicrle"></div>
-        <div id="circle-4" class="cicrle"></div>
-        <div id="circle-5" class="cicrle"></div>
-    </div>
-    <ul class="menu-components">
-        <li id="game-title"></li>
-    </ul>
+<div class="menu-background">
+    <div id="circle-1" class="cicrle"></div>
+    <div id="circle-2" class="cicrle"></div>
+    <div id="circle-3" class="cicrle"></div>
+    <div id="circle-4" class="cicrle"></div>
+    <div id="circle-5" class="cicrle"></div>
+</div>
+<ul class="menu-components flex-collumn">
+    <li class="menu-item flex-row justify-content-center" id="game-title"></li>
+    <li class="menu-item flex-row justify-content-space">
+        <span class="label">BACKGROUND MUSIC</span>
+        <input class="input" type="range" name="" id="background-music">
+    </li>
+    <li class="menu-item flex-row justify-content-space">
+        <span class="label">DOTS SOUND</span>
+        <input class="input" type="range" name="" id="dot-sound">
+    </li>
+    <li class="menu-item flex-row justify-content-space">
+        <span class="label">DOT NUMBER</span>
+        <input class="input input-text" type="text">
+    </li>
+    <li class="menu-item flex-row justify-content-center">
+        <button id="btn-start">START</button>
+    </li>
+</ul>
 <script type="module" src="../objects/scene/GameStartScene.js"></script>
 <script type="module" src="./assests/js/GameStart.js"></script>

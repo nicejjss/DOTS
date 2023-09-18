@@ -19,3 +19,21 @@ iframe{
     position: relative;
     z-index: 0;
 }
+
+.flex-collumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.justify-content-space{
+    justify-content: space-between;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
