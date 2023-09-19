@@ -20,6 +20,7 @@ export class GameManager {
         backgroundMusic.autoPlay(true);
         backgroundMusic.changeVolume(0.03);
         WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
+        console.log(backgroundMusic);
     }
 }
 

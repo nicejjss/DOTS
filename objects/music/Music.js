@@ -21,7 +21,6 @@ export class Music {
 
     destroyMusic() {
         if (this.music =  parent.document.getElementById(this.name)) {
-            console.log(this.music);
             this.music.remove();
         }
     }
@@ -41,7 +40,6 @@ export class Music {
     }
 
     autoPlay(autoplay = false) {
-        console.log('Play loop')
         this.music.autoplay = autoplay;
     }
 

@@ -20,7 +20,6 @@ export class GameStartScene extends Scene {
         let volume = startBtn.value / 100;
         let backgroundMusic = WindowTrait.getWindowData('backgroundMusic');
         backgroundMusic.changeVolume(volume);
-        console.log(volume);
     }
 
     dotSoundChange() {
@@ -29,7 +28,6 @@ export class GameStartScene extends Scene {
         let dotSound = new Dot();
         dotSound.changeVolume(volume);
         dotSound.play();
-        console.log(volume);
     }
 
     btnStartClick() {
