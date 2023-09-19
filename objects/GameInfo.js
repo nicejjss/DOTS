@@ -14,14 +14,6 @@ export class GameInfo {
         GameInfo.instance = this;
     }
 
-    //Public function to get Instance
-    // static getInstance() {
-    //     if (instance == null) {
-    //         instance = new Game();
-    //     }
-    //     return instance;
-    // }
-
     //public function
     setDotNumber(number) {
         GameInfo.instance.dotNumber = number;

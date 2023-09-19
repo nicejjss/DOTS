@@ -2,6 +2,7 @@ import { Scene } from "./Scene.js";
 import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Dot } from "../music/Dot.js"
 import { GamePlayScene } from  "./GamePlayScene.js";
+import { GameInfo } from "../GameInfo.js";
 
 export class GameStartScene extends Scene {
 
@@ -20,19 +21,39 @@ export class GameStartScene extends Scene {
         let volume = startBtn.value / 100;
         let backgroundMusic = WindowTrait.getWindowData('backgroundMusic');
         backgroundMusic.changeVolume(volume);
+
+        let gameManager = WindowTrait.getWindowData('gameManager');
+        gameManager.backgroundMusic = volume;
     }
 
-    dotSoundChange() {
+    dotSoundClick() {
         let startBtn = document.getElementById('dot-sound');
         let volume = startBtn.value / 100;
         let dotSound = new Dot();
         dotSound.changeVolume(volume);
         dotSound.play();
+
+        let gameManager = WindowTrait.getWindowData('gameManager');
+        gameManager.dotSound = volume;
     }
 
     btnStartClick() {
-        let gamePlayScene = new GamePlayScene();
-        gamePlayScene.changeScene();
+        let gameInfo = new GameInfo();
+        let dotNumber = document.getElementById('dot-number');
+        if (this.checkdotNumber(dotNumber.value)) {
+            gameInfo.dotNumber = dotNumber.value;
+            WindowTrait.pushtoWindowData('gameInfo', gameInfo);
+            let gamePlayScene = new GamePlayScene();
+            gamePlayScene.changeScene();
+        }
+    }
+
+    checkdotNumber(dotNumber) {
+        if(dotNumber > 0 && Number.isInteger(Number(dotNumber))) {
+            return true;
+        }
+        alert('dot number must more than 0 and be integer');
+        return false;
     }
 }
 
@@ -49,8 +70,8 @@ if (backgroundMusicInput) {
 
 let dotSoundInput = document.getElementById('dot-sound');
 if (dotSoundInput) {
-    dotSoundInput.addEventListener('change', function () {
-        gameStartScene.dotSoundChange();
+    dotSoundInput.addEventListener('click', function () {
+        gameStartScene.dotSoundClick();
     })
 }
 

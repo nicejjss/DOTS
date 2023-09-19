@@ -16,8 +16,6 @@ export class GamePlayScene extends Scene {
     }
 
     btnClick() {
-        let backgroundMusic = WindowTrait.getWindowData('backgroundMusic');
-        backgroundMusic.changeVolume(0.2);
         let iframe = window.frameElement;
         iframe.src = '../../view/gameStart.html';
     }

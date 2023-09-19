@@ -4,11 +4,22 @@ import { WindowTrait } from "../traits/WindowTrait.js";
 
 export class GameManager {
     //private
-    constructor() {
+    static instance;
 
+    backgroundMusic = 0.3;
+    dotSound = 0.7;
+
+    //private
+    constructor() {
+        if (GameManager.instance) {
+            return GameManager.instance;
+        }
+        GameManager.instance = this;
     }
 
     gameStart() {
+        // the second call
+        // console.log('game start');
         let scene = new GameStartScene();
         scene.sceneCreate();
     }
@@ -17,16 +28,15 @@ export class GameManager {
         let backgroundMusic = new BackgroundMusic();
         backgroundMusic.loop(true);
         backgroundMusic.autoPlay(true);
-        backgroundMusic.changeVolume(0.03);
+        backgroundMusic.changeVolume(this.backgroundMusic);
         WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
-        console.log(backgroundMusic);
     }
 }
-
-
 let game = new GameManager();
 game.gameStart();
 
-window.onload = function() {
+window.onload = function () {
     game.startBackgroundMusic();
 }
+
+WindowTrait.pushtoWindowData('gameManager', game);
