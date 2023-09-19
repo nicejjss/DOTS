@@ -11,7 +11,6 @@ export class GameManager {
     gameStart() {
         let scene = new GameStartScene();
         scene.sceneCreate();
-        this.startBackgroundMusic();
     }
 
     startBackgroundMusic() {
@@ -27,3 +26,7 @@ export class GameManager {
 
 let game = new GameManager();
 game.gameStart();
+
+window.onload = function() {
+    game.startBackgroundMusic();
+}
