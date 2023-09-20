@@ -1,9 +1,8 @@
-import { Object } from "../../classes/components/Object";
-import { dotMusic } from "../../constants";
-import { GameInfo } from "../GameInfo";
-import { Music } from "../music/Music";
+import { WindowTrait } from "../../traits/WindowTrait";
+import { GameInfo } from "../GameInfo.js";
+import { Dot as DotMusic } from "../music/Dot";
 
-class Dot extends Object {
+class Dot{
     //Color dot
     color;
 
@@ -16,11 +15,16 @@ class Dot extends Object {
 
     constructor() {
         //DI music
-        this.music = new Music(dotMusic['name'], dotMusic['src']);
-        this.gameInfor = GameInfo.getInstance();
+        this.music = new DotMusic();
     }
 
     playMusic() {
+        let volume = WindowTrait.getWindowData('gameManager').dotSound;
+        this.music.changeVolume(volume);
         this.music.play();
     }
+
+    // creatDot() {
+    //     let
+    // }
 }

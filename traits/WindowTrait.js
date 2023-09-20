@@ -1,3 +1,4 @@
+//trait
 export class WindowTrait {
 
     static pushtoWindowData(name, data) {

@@ -1,7 +1,7 @@
 import { Scene } from "./Scene.js";
 import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Dot } from "../music/Dot.js"
-import { GamePlayScene } from  "./GamePlayScene.js";
+import { GamePlayScene } from "./GamePlayScene.js";
 import { GameInfo } from "../GameInfo.js";
 
 export class GameStartScene extends Scene {
@@ -49,17 +49,32 @@ export class GameStartScene extends Scene {
     }
 
     checkdotNumber(dotNumber) {
-        if(dotNumber > 0 && Number.isInteger(Number(dotNumber))) {
+        if (dotNumber > 0 && Number.isInteger(Number(dotNumber))) {
             return true;
         }
         alert('dot number must more than 0 and be integer');
         return false;
+    }
+
+    loadData() {
+        let gameManager = WindowTrait.getWindowData('gameManager');
+        let gameInfo = WindowTrait.getWindowData('gameInfo');
+
+        let backgroundMusic = document.getElementById('background-music');
+        backgroundMusic.value = gameManager.backgroundMusic * 100;
+
+        let dotSound = document.getElementById('dot-sound');
+        dotSound.value = gameManager.dotSound * 100;
+
+        let btnStart = document.getElementById('dot-number');
+        btnStart.value = gameInfo.dotNumber == null ? 0 : gameInfo.dotNumber;
     }
 }
 
 
 //add event
 let gameStartScene = new GameStartScene();
+
 
 let backgroundMusicInput = document.getElementById('background-music');
 if (backgroundMusicInput) {
@@ -80,4 +95,8 @@ if (btnStart) {
     btnStart.addEventListener('click', function () {
         gameStartScene.btnStartClick();
     })
+}
+
+window.onload = function () {
+    gameStartScene.loadData();
 }

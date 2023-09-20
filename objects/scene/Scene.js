@@ -23,4 +23,8 @@ export class Scene {
         let iframe = window.frameElement;
         iframe.src = this.view;
     }
+
+    loadData() {
+        
+    }
 }

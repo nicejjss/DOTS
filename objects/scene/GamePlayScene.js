@@ -1,4 +1,5 @@
 // import { WindowTrait } from "../traits/WindowTrait.js";
+import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Scene } from "./Scene.js";
 
 export class GamePlayScene extends Scene {
@@ -15,18 +16,19 @@ export class GamePlayScene extends Scene {
         childView.src = this.view;
     }
 
-    btnClick() {
-        let iframe = window.frameElement;
-        iframe.src = '../../view/gameStart.html';
+    dotClick() {
+        let gameInfo = WindowTrait.getWindowData('gameInfo');
+        gameInfo.dotNumber--;
+        console.log(gameInfo.dotNumber);
     }
 }
 
 
 //add event
-let gameStartScene = new GamePlayScene();
-let playBtn = document.getElementById('playtBtn');
-if (playBtn) {
-    playBtn.addEventListener('click', function () {
-        gameStartScene.btnClick();
+let gamePlayScene = new GamePlayScene();
+let dot = document.getElementById('ready-text');
+if (dot) {
+    dot.addEventListener('click', function () {
+        gamePlayScene.dotClick();
     })
 }

@@ -1,4 +1,5 @@
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
+import { GamePlayScene } from "./scene/GamePlayScene.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
 import { WindowTrait } from "../traits/WindowTrait.js";
 
@@ -6,8 +7,9 @@ export class GameManager {
     //private
     static instance;
 
-    backgroundMusic = 0.3;
+    backgroundMusic = 0.1;
     dotSound = 0.7;
+    gamePlay = false;
 
     //private
     constructor() {
@@ -27,9 +29,9 @@ export class GameManager {
     startBackgroundMusic() {
         let backgroundMusic = new BackgroundMusic();
         backgroundMusic.loop(true);
-        backgroundMusic.autoPlay(true);
         backgroundMusic.changeVolume(this.backgroundMusic);
         WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
+        WindowTrait.getWindowData('backgroundMusic').play();
     }
 }
 let game = new GameManager();

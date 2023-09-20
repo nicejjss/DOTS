@@ -18,3 +18,6 @@ export const color = [
     'purple',
     'brown',
 ]
+
+export const countDown = 3;
+export const endCount = 0;

@@ -1,5 +1,4 @@
 import { color } from "../../../constants.js";
-import { WindowTrait } from "../../../traits/WindowTrait.js";
 
 let title = [
     'D', 'O', 'T', 'S'
@@ -21,19 +20,3 @@ title.forEach(function (e, k) {
     text.textContent = e;
     gameTitle.appendChild(text);
 });
-
-function loadData() {
-    let gameManager = WindowTrait.getWindowData('gameManager');
-    let gameInfo = WindowTrait.getWindowData('gameInfo');
-
-    let backgroundMusic = document.getElementById('background-music');
-    backgroundMusic.value = gameManager.backgroundMusic * 100;
-
-    let dotSound = document.getElementById('dot-sound');
-    dotSound.value = gameManager.dotSound * 100;
-
-    let btnStart = document.getElementById('dot-number');
-    btnStart.value = gameInfo.dotNumber;
-}
-
-loadData();
