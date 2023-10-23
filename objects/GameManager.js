@@ -30,7 +30,7 @@ export class GameManager {
         backgroundMusic.loop(true);
         backgroundMusic.changeVolume(this.backgroundMusic);
         WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
-        WindowTrait.getWindowData('backgroundMusic').play();
+        WindowTrait.getWindowData('backgroundMusic').autoPlay(true);
     }
 }
 let game = new GameManager();
