@@ -4,6 +4,7 @@ export class GameInfo {
 
     //Game infomation (private)
     dotNumber = 0;
+    lastDots;
     time;
 
     //private

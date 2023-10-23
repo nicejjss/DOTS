@@ -1,5 +1,4 @@
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
-import { GamePlayScene } from "./scene/GamePlayScene.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
 import { WindowTrait } from "../traits/WindowTrait.js";
 

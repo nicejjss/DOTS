@@ -42,6 +42,7 @@ export class GameStartScene extends Scene {
         let dotNumber = document.getElementById('dot-number');
         if (this.checkdotNumber(dotNumber.value)) {
             gameInfo.dotNumber = dotNumber.value;
+            gameInfo.lastDots = dotNumber.value;
             WindowTrait.pushtoWindowData('gameInfo', gameInfo);
             let gamePlayScene = new GamePlayScene();
             gamePlayScene.changeScene();
@@ -52,7 +53,7 @@ export class GameStartScene extends Scene {
         if (dotNumber > 0 && Number.isInteger(Number(dotNumber))) {
             return true;
         }
-        alert('dot number must more than 0 and be integer');
+        alert('The number of dots must be greater than 0 and be an integer');
         return false;
     }
 
@@ -85,7 +86,11 @@ if (backgroundMusicInput) {
 
 let dotSoundInput = document.getElementById('dot-sound');
 if (dotSoundInput) {
-    dotSoundInput.addEventListener('click', function () {
+    dotSoundInput.addEventListener('mouseup', function () {
+        gameStartScene.dotSoundClick();
+    });
+
+    dotSoundInput.addEventListener('touchend', function () {
         gameStartScene.dotSoundClick();
     })
 }
@@ -96,6 +101,12 @@ if (btnStart) {
         gameStartScene.btnStartClick();
     })
 }
+
+window.addEventListener('keydown', function(event) {
+    if (event.key == 'Enter') {
+        gameStartScene.btnStartClick();
+    }
+});
 
 window.onload = function () {
     gameStartScene.loadData();

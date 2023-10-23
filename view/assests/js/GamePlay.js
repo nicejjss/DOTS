@@ -3,8 +3,8 @@ import { countDown, endCount } from "../../../constants.js";
 let i = countDown;
 
 let ready = setInterval(() => {
-    if (i >= endCount) {
-        displayReady(i);
+    if (i-1 >= endCount) {
+        displayReady(i-1);
         i--;
     } else{
         clearInterval(ready);

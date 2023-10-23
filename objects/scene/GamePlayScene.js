@@ -3,13 +3,11 @@ import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Scene } from "./Scene.js";
 
 export class GamePlayScene extends Scene {
-    infor;
 
     //Injectt Dot Object
     constructor() {
         super();
         this.view = '../../view/gamePlay.html';
-        this.infor = window.parent.infor;
     }
 
     sceneLoad(childView) {
@@ -18,8 +16,8 @@ export class GamePlayScene extends Scene {
 
     dotClick() {
         let gameInfo = WindowTrait.getWindowData('gameInfo');
-        gameInfo.dotNumber--;
-        console.log(gameInfo.dotNumber);
+        gameInfo.lastDots--;
+        console.log(gameInfo.lastDots);
     }
 }
 
