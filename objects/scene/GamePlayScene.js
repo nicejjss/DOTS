@@ -1,5 +1,5 @@
-// import { WindowTrait } from "../traits/WindowTrait.js";
 import { WindowTrait } from "../../traits/WindowTrait.js";
+import { Dot } from "../dot/Dot.js";
 import { Scene } from "./Scene.js";
 
 export class GamePlayScene extends Scene {
@@ -18,6 +18,8 @@ export class GamePlayScene extends Scene {
         let gameInfo = WindowTrait.getWindowData('gameInfo');
         gameInfo.lastDots--;
         console.log(gameInfo.lastDots);
+        let dot = new Dot();
+        dot.playMusic();
     }
 }
 

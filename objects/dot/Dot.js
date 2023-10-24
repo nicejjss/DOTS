@@ -1,8 +1,7 @@
-import { WindowTrait } from "../../traits/WindowTrait";
-import { GameInfo } from "../GameInfo.js";
-import { Dot as DotMusic } from "../music/Dot";
+import { WindowTrait } from "../../traits/WindowTrait.js";
+import { Dot as DotMusic } from "../music/Dot.js";
 
-class Dot{
+export class Dot{
     //Color dot
     color;
 
