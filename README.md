@@ -1,3 +1,4 @@
 - This is the click game name dot create with OOP create by the love of games
 - Demo: https://dots-sage.vercel.app/
 - Use singleton cannot be use in iframe, must save in window Object like a propety
+- Cannot use Dependency Injection because using iframe
