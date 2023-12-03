@@ -7,9 +7,12 @@ export class BackgroundMusic extends Music {
     static instance;
     constructor() {
         super(backgroundMusic['name'], backgroundMusic['src']);
-        if (BackgroundMusic.instance) {
-            return BackgroundMusic.instance;
+    }
+
+    static getInstance() {
+        if (BackgroundMusic.instance == null) {
+            BackgroundMusic.instance = new BackgroundMusic();
         }
-        BackgroundMusic.instance = this;
+        return BackgroundMusic.instance;
     }
 }

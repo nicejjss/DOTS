@@ -1,4 +1,4 @@
-import { color } from "../../../constants.js";
+import {color} from "../../../constants.js";
 
 let title = [
     'D', 'O', 'T', 'S'

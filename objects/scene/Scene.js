@@ -1,27 +1,33 @@
+import { GameManager } from "../GameManager.js";
+
 export class Scene {
+    //protected
+    gameManager;
+
     //private
     view;
-
+    //private
     constructor(view) {
         this.view = view;
+        this.gameManager = new GameManager();
     }
 
-    sceneCreate() {
-        let childView = document.getElementById('child-view');
-        this.sceneLoad(childView);
-    }
-
-    sceneDestroy() {
-        let childView = document.getElementById('child-view');
-        childView.innerHTML = '';
-    }
-    sceneLoad() {
+    loadView() {
+        let scene = this;
+        $( "#child-view" ).load(this.view);
+        setTimeout(function(){
+            scene.loadData(scene);
+            scene.viewEvent(scene);
+        },100)
         
     }
 
-    changeScene() {
-        let iframe = window.frameElement;
-        iframe.src = this.view;
+    stackLoadView() {
+        
+    }
+
+    viewEvent() {
+
     }
 
     loadData() {

@@ -8,6 +8,11 @@ export const dotMusic = {
     'src': '../assests/music/dot.mp3',
 }
 
+export const victory = {
+    'name': 'victory',
+    'src': '../assests/music/victory.mp3'
+}
+
 export const color = [
     'red',
     'blue',

@@ -1,43 +1,38 @@
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
-import { WindowTrait } from "../traits/WindowTrait.js";
 
 export class GameManager {
     //private
     static instance;
 
-    backgroundMusic = 0.1;
-    dotSound = 0.7;
-    gamePlay = false;
+    backgroundMusicVolume = 0;
+    victoryVolume = 0.3;
+    dotSoundVolume = 0.7;
+    dot = 0;
+    lastDots;
+    time;
 
     //private
     constructor() {
-        if (GameManager.instance) {
-            return GameManager.instance;
+        if (GameManager.instance == null) {
+            GameManager.instance = this;
         }
-        GameManager.instance = this;
+        return GameManager.instance;
     }
-
     gameStart() {
-        // the second call
-        // console.log('game start');
-        let scene = new GameStartScene();
-        scene.sceneCreate();
+        let gameStart = new GameStartScene();
+        gameStart.loadView();
     }
 
     startBackgroundMusic() {
-        let backgroundMusic = new BackgroundMusic();
+        let backgroundMusic = BackgroundMusic.getInstance();
+        backgroundMusic.changeVolume(GameManager.instance.backgroundMusicVolume);
         backgroundMusic.loop(true);
-        backgroundMusic.changeVolume(this.backgroundMusic);
-        WindowTrait.pushtoWindowData('backgroundMusic', backgroundMusic);
-        WindowTrait.getWindowData('backgroundMusic').autoPlay(true);
+        backgroundMusic.autoPlay(true);
+        console.log(backgroundMusic);
     }
 }
+
 let game = new GameManager();
 game.gameStart();
-
-window.onload = function () {
-    game.startBackgroundMusic();
-}
-
-WindowTrait.pushtoWindowData('gameManager', game);
+game.startBackgroundMusic();

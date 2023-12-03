@@ -1,34 +1,48 @@
-import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Dot } from "../dot/Dot.js";
 import { Scene } from "./Scene.js";
+import { color } from "../../constants.js";
 
 export class GamePlayScene extends Scene {
 
-    //Injectt Dot Object
-    constructor() {
-        super();
-        this.view = '../../view/gamePlay.html';
-    }
+    view = '../../view/gamePlay.html';
 
-    sceneLoad(childView) {
-        childView.src = this.view;
+    //Injectt Dot Object
+    constructor(view) {
+        super(view);
+        console.log(this.gameManager);
     }
 
     dotClick() {
-        let gameInfo = WindowTrait.getWindowData('gameInfo');
-        gameInfo.lastDots--;
-        console.log(gameInfo.lastDots);
+        this.gameManager.dot--;
         let dot = new Dot();
         dot.playMusic();
+
+        this.checkDot(gameInfo.lastDots);
+        this.showDotNumber(gameInfo.lastDots);
     }
-}
 
+    checkDot(value) {
+        if (value === 0) {
+            console.log(this.gameManager);
+        }
+    }
 
-//add event
-let gamePlayScene = new GamePlayScene();
-let dot = document.getElementById('ready-text');
-if (dot) {
-    dot.addEventListener('click', function () {
-        gamePlayScene.dotClick();
-    })
+    loadData() {
+    }
+
+    showDotNumber(value) {
+        document.getElementById('dot-number').textContent = "Dot Number: " + value;
+
+    }
+
+    creatDot() {
+        let dot = document.createElement('div');
+        dot.id = 'dot';
+        dot.height = this.height;
+        dot.width = this.width;
+
+        let textColor = Math.floor(Math.random() * color.length);
+        dot.style.backgroundColor = color[textColor];
+        return dot;
+    }
 }

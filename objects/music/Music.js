@@ -7,6 +7,8 @@ export class Music {
     //Music
     music;
 
+    static instance;
+
     constructor(name, src) {
         this.name = name;
         this.src = src;
@@ -20,15 +22,13 @@ export class Music {
     }
 
     destroyMusic() {
-        if (this.music =  parent.document.getElementById(this.name)) {
+        if (this.music = document.getElementById(this.name)) {
             this.music.remove();
         }
     }
 
     play() {
-        if (this.music.paused || this.music.duration <= 0) {
             this.music.play();
-        }
     };
 
     pause() {

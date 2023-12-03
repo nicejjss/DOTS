@@ -10,7 +10,4 @@ export class GamePauseScene extends Scene {
         this.view = '../../view/gameRun.html';
         this.dot = dot;
     }
-
-    
-
 }

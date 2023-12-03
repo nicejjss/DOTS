@@ -1,15 +1,12 @@
 @import url('../../../assests/css/index.css');
 
 #ready-background {
-    height: 100vh;
     background: #80808040;
-    width: 100vw;
+    opacity: 0.75;
     text-align: center;
-    position: absolute;
-    opacity: 0.5;
 }
 
-#ready-count{
+#ready-count {
     font-size: 300px;
     color: white;
 }
@@ -18,4 +15,15 @@
     margin-top: 20px;
     font-size: 40px;
     color: white;
+}
+#header-list {
+    margin-top: 20px;
+}
+
+#dot-number {
+    margin-left: 20px;
+}
+
+#pause {
+    margin-right: 20px;
 }

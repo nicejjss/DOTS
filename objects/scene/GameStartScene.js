@@ -1,29 +1,23 @@
 import { Scene } from "./Scene.js";
-import { WindowTrait } from "../../traits/WindowTrait.js";
 import { Dot } from "../music/Dot.js"
-import { GamePlayScene } from "./GamePlayScene.js";
-import { GameInfo } from "../GameInfo.js";
+import { BackgroundMusic } from "../music/BackgroundMusic.js";
+import { GamePlayScene } from "./GamePlayScene.js"
 
 export class GameStartScene extends Scene {
 
-    constructor() {
-        super();
-        this.view = '../../view/gameStart.html';
-    }
+    view = '../../view/gameStart.html';
 
-    sceneLoad(childView) {
-        childView.src = this.view;
+    constructor(view) {
+        super(view);
     }
 
     //add infomation to game and change to game run
     backgroundMusicInput() {
         let startBtn = document.getElementById('background-music');
         let volume = startBtn.value / 100;
-        let backgroundMusic = WindowTrait.getWindowData('backgroundMusic');
+        let backgroundMusic = BackgroundMusic.getInstance();
+        console.log(backgroundMusic.music.volume);
         backgroundMusic.changeVolume(volume);
-
-        let gameManager = WindowTrait.getWindowData('gameManager');
-        gameManager.backgroundMusic = volume;
     }
 
     dotSoundClick() {
@@ -32,20 +26,14 @@ export class GameStartScene extends Scene {
         let dotSound = new Dot();
         dotSound.changeVolume(volume);
         dotSound.play();
-
-        let gameManager = WindowTrait.getWindowData('gameManager');
-        gameManager.dotSound = volume;
     }
 
     btnStartClick() {
-        let gameInfo = new GameInfo();
         let dotNumber = document.getElementById('dot-number');
         if (this.checkdotNumber(dotNumber.value)) {
-            gameInfo.dotNumber = dotNumber.value;
-            gameInfo.lastDots = dotNumber.value;
-            WindowTrait.pushtoWindowData('gameInfo', gameInfo);
+            this.gameManager.dot = dotNumber.value;
             let gamePlayScene = new GamePlayScene();
-            gamePlayScene.changeScene();
+            gamePlayScene.loadView();
         }
     }
 
@@ -53,61 +41,58 @@ export class GameStartScene extends Scene {
         if (dotNumber > 0 && Number.isInteger(Number(dotNumber))) {
             return true;
         }
-        alert('The number of dots must be greater than 0 and be an integer');
+
+        this.showErrorDot();
         return false;
     }
 
-    loadData() {
-        let gameManager = WindowTrait.getWindowData('gameManager');
-        let gameInfo = WindowTrait.getWindowData('gameInfo');
+    showErrorDot() {
+        let error = document.getElementById('dot-error') ?? document.createElement('p');
+        error.style.color = 'red';
+        error.id = 'dot-error';
+        error.textContent = '*The number of dots must be greater than 0 and be an integer';
 
+        let inputDot = document.getElementById('dot-number');
+        inputDot.parentNode.insertBefore(error, inputDot.nextSibling);
+    }
+
+    loadData() {
         let backgroundMusic = document.getElementById('background-music');
-        backgroundMusic.value = gameManager.backgroundMusic * 100;
+        backgroundMusic.value = this.gameManager.backgroundMusicVolume * 100;
 
         let dotSound = document.getElementById('dot-sound');
-        dotSound.value = gameManager.dotSound * 100;
+        dotSound.value = this.gameManager.dotSoundVolume * 100;
 
         let btnStart = document.getElementById('dot-number');
-        btnStart.value = gameInfo.dotNumber == null ? 0 : gameInfo.dotNumber;
+        btnStart.value = this.gameManager.dot;
     }
-}
 
+    viewEvent(scene) {
+        let backgroundMusicInput = document.getElementById('background-music');
+        backgroundMusicInput.addEventListener('input', function () {
+            scene.backgroundMusicInput();
+        })
 
-//add event
-let gameStartScene = new GameStartScene();
+        let dotSoundInput = document.getElementById('dot-sound');
 
+        dotSoundInput.addEventListener('mouseup', function () {
+            scene.dotSoundClick();
+        });
 
-let backgroundMusicInput = document.getElementById('background-music');
-if (backgroundMusicInput) {
-    backgroundMusicInput.addEventListener('input', function () {
-        gameStartScene.backgroundMusicInput();
-    })
-}
+        dotSoundInput.addEventListener('touchend', function () {
+            scene.dotSoundClick();
+        })
 
-let dotSoundInput = document.getElementById('dot-sound');
-if (dotSoundInput) {
-    dotSoundInput.addEventListener('mouseup', function () {
-        gameStartScene.dotSoundClick();
-    });
+        let btnStart = document.getElementById('btn-start');
 
-    dotSoundInput.addEventListener('touchend', function () {
-        gameStartScene.dotSoundClick();
-    })
-}
+        btnStart.addEventListener('click', function () {
+            scene.btnStartClick();
+        })
 
-let btnStart = document.getElementById('btn-start');
-if (btnStart) {
-    btnStart.addEventListener('click', function () {
-        gameStartScene.btnStartClick();
-    })
-}
-
-window.addEventListener('keydown', function(event) {
-    if (event.key == 'Enter') {
-        gameStartScene.btnStartClick();
+        window.addEventListener('keydown', function (event) {
+            if (event.key == 'Enter') {
+                scene.btnStartClick();
+            }
+        });
     }
-});
-
-window.onload = function () {
-    gameStartScene.loadData();
 }
