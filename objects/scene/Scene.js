@@ -19,7 +19,6 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
         },100)
-        
     }
 
     stackLoadView() {

@@ -1,9 +1,9 @@
 @import url('../../../assests/css/index.css');
 
 #ready-background {
-    background: #80808040;
-    opacity: 0.75;
+    background: #808080;
     text-align: center;
+    z-index: 99;
 }
 
 #ready-count {
@@ -16,14 +16,28 @@
     font-size: 40px;
     color: white;
 }
+
 #header-list {
     margin-top: 20px;
 }
 
-#dot-number {
-    margin-left: 20px;
+.header-item {
+    /* flex: 1 1 0px; */
+    text-align: center;
+    font-size: 25px;
 }
 
 #pause {
-    margin-right: 20px;
+    cursor: pointer;
+}
+
+#dot-zone {
+    height: 95vh;
+    padding: 40px;
+}
+
+#dot {
+    cursor: pointer;
+    border-radius:  50%;
+    position: absolute;
 }

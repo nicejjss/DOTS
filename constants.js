@@ -22,7 +22,14 @@ export const color = [
     'black',
     'purple',
     'brown',
-]
+    'violet',
+    'indigo',
+];
+
+export const timeout = 100;
 
 export const countDown = 3;
 export const endCount = 0;
+
+export const flagOn = 1;
+export const flagOff = 0;

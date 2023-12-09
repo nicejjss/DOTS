@@ -35,6 +35,10 @@ body {
     justify-content: space-between;
 }
 
+.justify-content-space-around {
+    justify-content: space-around;
+}
+
 .justify-content-center{
     justify-content: center;
 }
@@ -51,7 +55,7 @@ body {
     list-style: none;
 }
 
-.position-absolut-screen {
+.position-absolute-screen {
     position: absolute;
     top: 0;
     left: 0;

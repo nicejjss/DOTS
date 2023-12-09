@@ -1,4 +1,4 @@
-import { Dot as DotMusic } from "../music/Dot.js";
+import { Dot as DotSound } from "../music/Dot.js";
 
 export class Dot{
     //Color dot
@@ -7,17 +7,34 @@ export class Dot{
     //Dot
     width = '55px';
     height = '55px';
+    limited = 90;
     
     //music
     music;
 
-    constructor() {
+    constructor(color, dotSound) {
         //DI music
-        this.music = new DotMusic();
+        this.color = color;
+        this.music = new DotSound();
+        this.music.changeVolume(dotSound);
     }
 
     playMusic() {
-        this.music.changeVolume(volume);
         this.music.play();
+    }
+
+    createDot() {
+        let dot = document.createElement('div');
+        dot.style.height = this.height;
+        dot.style.width = this.width;
+        dot.style.backgroundColor = this.color;
+        dot.id = 'dot';
+
+        return dot;
+    }
+
+    destroyDot() {
+        let dot = document.getElementById('dot');
+        dot.remove();
     }
 }

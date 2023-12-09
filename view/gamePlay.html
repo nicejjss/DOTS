@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="./view/assests/css/PlayScene.css">
-<div id="ready-background" class="position-absolut-screen">
+<div id="ready-background" class="position-absolute-screen" flag="1">
     <div id="ready-text" class="stroke">Ready!!!</div>
     <div id="ready-count" class="stroke"></div>
 </div>
-<div id="play" class="position-absolut-screen">
-    <ul id="header-list" class="justify-content-space-between flex-row list-style-none">
-        <li id="dot-number">Dot Number: 12</li>
-        <li id="time">00:00</li>
-        <li id="pause">Pause</li>
+<div id="play" class="position-absolute-screen">
+    <ul id="header-list" class="justify-content-space-around flex-row list-style-none">
+        <li class="header-item" id="dot-number">Dots: <span id="dot-value"></span></li>
+        <li class="header-item" id="time">
+            <span id="time-second">00</span>:<span id="time-milisecond">00</span>
+        </li>
+        <li class="header-item" id="pause">Pause</li>
     </ul>
     <div id="dot-zone"></div>
 </div>

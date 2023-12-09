@@ -21,14 +21,12 @@ export class Music {
         this.music.id = this.name;
     }
 
-    destroyMusic() {
-        if (this.music = document.getElementById(this.name)) {
-            this.music.remove();
-        }
+    destroy() {
+        this.music.remove();
     }
 
     play() {
-            this.music.play();
+        this.music.play();
     };
 
     pause() {
@@ -37,6 +35,9 @@ export class Music {
 
     changeVolume(volume) {
         this.music.volume = volume;
+        if (this.music.paused === true) {
+            this.music.play();
+        }
     }
 
     autoPlay(autoplay = false) {

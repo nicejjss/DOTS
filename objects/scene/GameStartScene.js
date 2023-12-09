@@ -1,6 +1,5 @@
 import { Scene } from "./Scene.js";
-import { Dot } from "../music/Dot.js"
-import { BackgroundMusic } from "../music/BackgroundMusic.js";
+import { Dot } from "../music/Dot.js";
 import { GamePlayScene } from "./GamePlayScene.js"
 
 export class GameStartScene extends Scene {
@@ -15,9 +14,7 @@ export class GameStartScene extends Scene {
     backgroundMusicInput() {
         let startBtn = document.getElementById('background-music');
         let volume = startBtn.value / 100;
-        let backgroundMusic = BackgroundMusic.getInstance();
-        console.log(backgroundMusic.music.volume);
-        backgroundMusic.changeVolume(volume);
+        this.gameManager.backgroundMusic.changeVolume(volume);
     }
 
     dotSoundClick() {
@@ -26,12 +23,13 @@ export class GameStartScene extends Scene {
         let dotSound = new Dot();
         dotSound.changeVolume(volume);
         dotSound.play();
+        this.gameManager.dotSoundVolume = volume;
     }
 
     btnStartClick() {
         let dotNumber = document.getElementById('dot-number');
         if (this.checkdotNumber(dotNumber.value)) {
-            this.gameManager.dot = dotNumber.value;
+            this.gameManager.dots = parseInt(dotNumber.value);
             let gamePlayScene = new GamePlayScene();
             gamePlayScene.loadView();
         }
@@ -64,7 +62,7 @@ export class GameStartScene extends Scene {
         dotSound.value = this.gameManager.dotSoundVolume * 100;
 
         let btnStart = document.getElementById('dot-number');
-        btnStart.value = this.gameManager.dot;
+        btnStart.value = this.gameManager.dots;
     }
 
     viewEvent(scene) {
