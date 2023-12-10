@@ -1,0 +1,26 @@
+.menu-item {
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.menu-components {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    width: 50%;
+}
+
+.label {
+    font-size: 20px;
+    font-weight: 600;
+    width: 215px;
+    flex-grow: 1;
+}
+
+.input {
+    width: 150px;
+    flex-grow: 1;
+}

@@ -1,19 +1,25 @@
 import { Dot } from "../dot/Dot.js";
 import { Scene } from "./Scene.js";
+import { GamePauseScene } from "./GamePauseScene.js";
 import { color, countDown, endCount, flagOff, flagOn, timeout } from "../../constants.js";
 
 export class GamePlayScene extends Scene {
 
     view = '../../view/gamePlay.html';
     gameRunning = flagOff;
-    sec = 0;
-    miliSec = 0;
     dot;
 
     //Injectt Dot Object
     constructor(view) {
         super(view);
-        this.currentDots = this.gameManager.dots;
+    }
+
+    static getInstance() {
+        if (GamePlayScene.instance == null) {
+            GamePlayScene.instance = new GamePlayScene();
+        }
+        
+        return GamePlayScene.instance;
     }
 
     loadView() {
@@ -28,10 +34,9 @@ export class GamePlayScene extends Scene {
     }
 
     dotClicked() {
-        this.currentDots--;
-        document.getElementById('dot-value').innerText = this.currentDots;
-        this.checkDot(this.currentDots);
-        return this.currentDots;
+        this.gameManager.currentDots--
+        document.getElementById('dot-value').innerText =  this.gameManager.currentDots;
+        this.checkDot(this.gameManager.currentDots);
     }
 
     checkDot(value) {
@@ -41,14 +46,16 @@ export class GamePlayScene extends Scene {
     }
 
     pauseClick() {
+        this.gameRunning = flagOff;
         let readyBackground = document.getElementById('ready-background');
         document.getElementById('ready-count').innerText = '';
         if (readyBackground.getAttribute('flag') == flagOff) {
             readyBackground.style = 'display: block';
             readyBackground.setAttribute('flag', flagOn);
-            this.showReadyBackground();
-            this.gameRunning = flagOff;
         }
+
+        let pauseScene = GamePauseScene.getInstance();
+        pauseScene.stackView();
     }
 
     showReadyBackground() {
@@ -98,22 +105,22 @@ export class GamePlayScene extends Scene {
         let scene = this;
 
         if (this.gameRunning) {
-            this.miliSec++;
+            this.gameManager.miliSec++;
 
-            let secString = this.sec;
-            let miliSecString = this.miliSec;
+            let secString = this.gameManager.sec;
+            let miliSecString = this.gameManager.miliSec;
 
-            if (this.miliSec == 100) {
-                this.sec++;
-                this.miliSec = 0;
+            if (this.gameManager.miliSec == 100) {
+                this.gameManager.sec++;
+                this.gameManager.miliSec = 0;
             }
 
 
-            if (this.sec < 10) {
+            if (this.gameManager.sec < 10) {
                 secString = "0" + secString;
             }
 
-            if (this.miliSec < 10) {
+            if (this.gameManager.miliSec < 10) {
                 miliSecString = "0" + miliSecString;
             }
 
@@ -142,11 +149,11 @@ export class GamePlayScene extends Scene {
 
     loadData() {
         let dotValue = document.getElementById('dot-value');
-        dotValue.innerText = this.currentDots;
+        dotValue.innerText = this.gameManager.currentDots;
     }
 
     viewEvent(scene) {
-        let pause = document.getElementById('pause');
+        let pause = document.getElementById('pause-btn');
         pause.addEventListener('click', function () {
             scene.pauseClick();
         })

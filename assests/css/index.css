@@ -62,3 +62,19 @@ body {
     bottom: 0;
     right: 0;
 }
+
+.stack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.max-width-500 {
+    width: 500px;
+}
+
+.btn {
+    outline: none;
+    cursor: pointer;
+    padding: 10px 35px;
+}

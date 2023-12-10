@@ -7,7 +7,7 @@ export class Dot{
     //Dot
     width = '55px';
     height = '55px';
-    limited = 90;
+    limited = 85;
     
     //music
     music;

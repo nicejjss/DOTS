@@ -1,6 +1,7 @@
 import { Scene } from "./Scene.js";
 import { Dot } from "../music/Dot.js";
 import { GamePlayScene } from "./GamePlayScene.js"
+import { createTitle } from "../../view/assests/js/GameStart.js"
 
 export class GameStartScene extends Scene {
 
@@ -10,11 +11,20 @@ export class GameStartScene extends Scene {
         super(view);
     }
 
+    static getInstance() {
+        if (GameStartScene.instance == null) {
+            GameStartScene.instance = new GameStartScene();
+        }
+        
+        return GameStartScene.instance;
+    }
+
     //add infomation to game and change to game run
     backgroundMusicInput() {
         let startBtn = document.getElementById('background-music');
         let volume = startBtn.value / 100;
         this.gameManager.backgroundMusic.changeVolume(volume);
+        this.gameManager.backgroundMusicVolume = volume;
     }
 
     dotSoundClick() {
@@ -30,7 +40,8 @@ export class GameStartScene extends Scene {
         let dotNumber = document.getElementById('dot-number');
         if (this.checkdotNumber(dotNumber.value)) {
             this.gameManager.dots = parseInt(dotNumber.value);
-            let gamePlayScene = new GamePlayScene();
+            this.gameManager.currentDots = this.gameManager.dots;
+            let gamePlayScene = GamePlayScene.getInstance();
             gamePlayScene.loadView();
         }
     }
@@ -50,8 +61,8 @@ export class GameStartScene extends Scene {
         error.id = 'dot-error';
         error.textContent = '*The number of dots must be greater than 0 and be an integer';
 
-        let inputDot = document.getElementById('dot-number');
-        inputDot.parentNode.insertBefore(error, inputDot.nextSibling);
+        let itemNumber = document.getElementById('item-number');
+        itemNumber.insertAdjacentElement("afterend", error);
     }
 
     loadData() {
@@ -92,5 +103,9 @@ export class GameStartScene extends Scene {
                 scene.btnStartClick();
             }
         });
+    }
+
+    viewCustom() {
+        createTitle();
     }
 }

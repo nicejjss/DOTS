@@ -6,23 +6,15 @@
     <div id="circle-4" class="cicrle"></div>
     <div id="circle-5" class="cicrle"></div>
 </div>
-<ul class="menu-components flex-collumn">
+<ul class="menu-components flex-collumn max-width-500" id="menu-list">
     <li class="menu-item flex-row justify-content-center" id="game-title"></li>
-    <li class="menu-item flex-row justify-content-space-between">
-        <span class="label">BACKGROUND MUSIC</span>
-        <input class="input" type="range" name="" id="background-music">
-    </li>
-    <li class="menu-item flex-row justify-content-space-between">
-        <span class="label">DOTS SOUND</span>
-        <input class="input" type="range" name="" id="dot-sound">
-    </li>
-    <li class="menu-item flex-row justify-content-space-between">
+    <setting-menu></setting-menu>
+    <li id="item-number" class="menu-item flex-row justify-content-space-between">
         <span class="label">DOT NUMBER</span>
         <input min="0" class="input input-text" type="number" id="dot-number">
     </li>
     <li class="menu-item flex-row justify-content-center">
-        <button id="btn-start">START</button>
+        <button id="btn-start" class="btn">START</button>
     </li>
 </ul>
-<script type="module" src="./view/assests/js/GameStart.js"></script>
 <script type="module" src="../objects/scene/GameStartScene.js"></script>

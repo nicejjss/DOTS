@@ -1,6 +1,4 @@
-import { timeout } from "../constants.js";
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
-import { Dot } from "./music/Dot.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
 
 export class GameManager {
@@ -12,6 +10,9 @@ export class GameManager {
     victoryVolume = 0.3;
     dotSoundVolume = 0.7;
     dots = 0;
+    currentDots = 0;
+    sec = 0;
+    miliSec = 0;
     lastDots;
     time = 0;
 
@@ -25,7 +26,7 @@ export class GameManager {
     }
     gameStart() {
         this.startBackgroundMusic();
-        let gameStart = new GameStartScene();
+        let gameStart = GameStartScene.getInstance();
         gameStart.loadView();
     }
 

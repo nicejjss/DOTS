@@ -1,9 +1,9 @@
 @import url('../../../assests/css/index.css');
 
 #ready-background {
-    background: #808080;
+    background: #808080b8;
     text-align: center;
-    z-index: 99;
+    z-index: 1;
 }
 
 #ready-count {
@@ -27,7 +27,7 @@
     font-size: 25px;
 }
 
-#pause {
+#pause-btn {
     cursor: pointer;
 }
 
