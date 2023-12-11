@@ -2,6 +2,7 @@ import { Dot } from "../dot/Dot.js";
 import { Scene } from "./Scene.js";
 import { GamePauseScene } from "./GamePauseScene.js";
 import { color, countDown, endCount, flagOff, flagOn, timeout } from "../../constants.js";
+import { GameOverScene } from "./GameOverScene.js";
 
 export class GamePlayScene extends Scene {
 
@@ -17,8 +18,9 @@ export class GamePlayScene extends Scene {
     static getInstance() {
         if (GamePlayScene.instance == null) {
             GamePlayScene.instance = new GamePlayScene();
+            
         }
-        
+        this.dot = null;
         return GamePlayScene.instance;
     }
 
@@ -34,26 +36,26 @@ export class GamePlayScene extends Scene {
     }
 
     dotClicked() {
-        this.gameManager.currentDots--
+        this.gameManager.currentDots--;
         document.getElementById('dot-value').innerText =  this.gameManager.currentDots;
         this.checkDot(this.gameManager.currentDots);
     }
 
     checkDot(value) {
         if (value === 0) {
-            console.log(this.gameManager);
+            this.displayGameOver();
         }
     }
 
-    pauseClick() {
-        this.gameRunning = flagOff;
-        let readyBackground = document.getElementById('ready-background');
-        document.getElementById('ready-count').innerText = '';
-        if (readyBackground.getAttribute('flag') == flagOff) {
-            readyBackground.style = 'display: block';
-            readyBackground.setAttribute('flag', flagOn);
-        }
+    displayGameOver() {
+        document.getElementById('ready-text').innerText = '';
+        this.readyBackgroundStart();
+        let overScene = GameOverScene.getInstance();
+        overScene.stackView();
+    }
 
+    pauseClick() {
+        this.readyBackgroundStart();
         let pauseScene = GamePauseScene.getInstance();
         pauseScene.stackView();
     }
@@ -139,9 +141,10 @@ export class GamePlayScene extends Scene {
     }
 
     readyBackgroundStart() {
+        this.gameRunning = flagOff;
+        document.getElementById('ready-count').innerText = '';
         let readyBackground = document.getElementById('ready-background');
-
-        if (readyBackground.getAttribute('flag') === flagOff) {
+        if (readyBackground.getAttribute('flag') == flagOff) {
             readyBackground.style = 'display: block';
             readyBackground.setAttribute('flag', flagOn);
         }

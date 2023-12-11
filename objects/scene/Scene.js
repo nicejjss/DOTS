@@ -20,7 +20,12 @@ export class Scene {
     static getInstance() {
     }
 
+    static deleteInstance() {
+        this.instance = null
+    }
+
     loadView() {
+        
         let scene = this;
         $( "#child-view" ).load(this.view);
         setTimeout(function(){

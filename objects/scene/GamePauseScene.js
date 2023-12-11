@@ -52,8 +52,8 @@ export class GamePauseScene extends Scene {
     btnMenuClick() {
         if (confirm('Data will not be saved')) {
             this.destroyStack();
-            let gamePlay = GameStartScene.getInstance();
-            gamePlay.loadView();
+            let gameStartScene = GameStartScene.getInstance();
+            gameStartScene.loadView();
         }
     }
 

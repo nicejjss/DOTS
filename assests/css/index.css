@@ -70,7 +70,7 @@ body {
 }
 
 .max-width-500 {
-    width: 500px;
+    max-width: 500px;
 }
 
 .btn {

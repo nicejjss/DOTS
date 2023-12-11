@@ -9,12 +9,14 @@
 #ready-count {
     font-size: 300px;
     color: white;
+    outline: black;
 }
 
 #ready-text {
     margin-top: 20px;
     font-size: 40px;
     color: white;
+    outline: black;
 }
 
 #header-list {

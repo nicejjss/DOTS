@@ -1,14 +1,18 @@
 import { Scene } from "./Scene.js";
 
 export class GameOverScene extends Scene {
-    //Dot Object
-    dot;
+    view = '../../view/gameOver.html';
 
-    //Injectt Dot Object
-    constructor(dot) {
-        super();
-        this.view = '../../view/gameRun.html';
-        this.dot = dot;
+    constructor(view) {
+        super(view);
+    }
+
+    static getInstance() {
+        if (GameOverScene.instance == null) {
+            GameOverScene.instance = new GameOverScene();
+        }
+        
+        return GameOverScene.instance;
     }
 
 

@@ -13,8 +13,6 @@ export class GameManager {
     currentDots = 0;
     sec = 0;
     miliSec = 0;
-    lastDots;
-    time = 0;
 
     //private
     constructor() {
