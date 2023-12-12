@@ -5,8 +5,4 @@ export class Dot extends Music {
     constructor() {
         super(dotMusic['name'], dotMusic['src']);
     }
-
-    play() {
-        this.music.play();
-    };
 }
