@@ -1,5 +1,6 @@
 import { Victory } from "../music/Victory.js";
 import { Scene } from "./Scene.js";
+import { GameStartScene } from "./GameStartScene.js";
 
 export class GameOverScene extends Scene {
     view = '../../view/gameOver.html';
@@ -24,5 +25,23 @@ export class GameOverScene extends Scene {
 
     playVictoryMusic() {
         this.victoryMusic.play();
+    }
+
+    btnMenuClick() {
+        this.destroyStack();
+        let gameStartScene = GameStartScene.getInstance();
+        gameStartScene.loadView();
+    }
+
+    loadData() {
+
+    }
+
+    viewEvent(scene) {
+        let btnMenu = document.getElementById('re-play');
+
+        btnMenu.addEventListener('click', function () {
+            scene.btnMenuClick();
+        })
     }
 }

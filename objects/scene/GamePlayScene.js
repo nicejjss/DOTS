@@ -20,7 +20,7 @@ export class GamePlayScene extends Scene {
             GamePlayScene.instance = new GamePlayScene();
             
         }
-        this.dot = null;
+        GamePlayScene.instance.dot = null;
         return GamePlayScene.instance;
     }
 

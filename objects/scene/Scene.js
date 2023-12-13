@@ -8,7 +8,7 @@ export class Scene {
 
     //private
     view;
-    //private
+    //protected
     static instance;
 
     constructor(view) { 

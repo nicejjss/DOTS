@@ -1,9 +1,12 @@
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
+import { Player } from "../model/Player.js";
 
 export class GameManager {
     //private
     static instance;
+
+    //public
     backgroundMusic;
 
     backgroundMusicVolume = 0;
@@ -37,3 +40,9 @@ export class GameManager {
 
 let game = new GameManager();
 game.gameStart();
+
+Player.getModel({
+    'name': 'John',
+    'dots': 12,
+    'time': '12',
+});
