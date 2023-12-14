@@ -88,9 +88,7 @@ export class GamePlayScene extends Scene {
         this.runTime();
 
         this.clearDots();
-        if (!this.dot) {
-            this.displayDot();
-        }
+        this.displayDot();
     }
 
     clearDots() {
