@@ -15,7 +15,7 @@ class Setting extends HTMLElement {
 
 class BestRecord extends HTMLElement {
     connectedCallback() {
-        this.innerHTML = `<span>Best: D:<span id='c-record-dot'>12</span> T:<span id='c-record-time'>12:12</span>s</span>`
+        this.innerHTML = `<span>Best: D:<span id='c-record-dot'></span> T:<span id='c-record-time'></span>s</span>`
     }
 }
 
