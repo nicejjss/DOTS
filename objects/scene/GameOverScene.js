@@ -75,15 +75,13 @@ export class GameOverScene extends Scene {
 
     loadData() {
         let record = Player.get();
+        let recordDots = document.getElementById('record-dots');
+        let recordTime = document.getElementById('record-time');
         if (record) {
-            let recordDots = document.getElementById('record-dots');
             recordDots.innerHTML = record['dots'];
-            let recordTime = document.getElementById('record-time');
             recordTime.innerHTML = record['time'] + 's';
         } else {
-            let recordDots = document.getElementById('record-dots');
-            recordDots.innerHTML = 0;
-            let recordTime = document.getElementById('record-time');
+            recordDots.innerHTML = '0';
             recordTime.innerHTML = '0:0' + 's';
         }
 
