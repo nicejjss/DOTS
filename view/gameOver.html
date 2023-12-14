@@ -1,8 +1,26 @@
 <link rel="stylesheet" href="./view/assests/css/OverScene.css">
 <div id="over" class="position-absolute-screen menu-components max-width-500 list-style-none">
-    <table>
-        <thead></thead>
-        
+    <p id="label" >RECORDS</p>
+    <table id="records">
+        <thead>
+            <tr>
+                <td class="text-align-left"></td>
+                <td>Dots</td>
+                <td>Time</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="best-record">
+                <td class="text-align-left">Best</td>
+                <td id="record-dots"></td>
+                <td id="record-time"></td>
+            </tr>
+            <tr id="current-record">
+                <td class="text-align-left">Current</td>
+                <td id="current-dots"></td>
+                <td id="current-time"></td>
+            </tr>
+        </tbody>
     </table>
     <button class="btn" id="re-play">Return to Menu</button>
 </div>

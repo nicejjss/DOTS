@@ -3,6 +3,7 @@ import { Scene } from "./Scene.js";
 import { GamePauseScene } from "./GamePauseScene.js";
 import { color, countDown, endCount, flagOff, flagOn, timeout } from "../../constants.js";
 import { GameOverScene } from "./GameOverScene.js";
+import { getcRecord } from "../../traits/SceneTraits.js";
 
 export class GamePlayScene extends Scene {
 
@@ -18,7 +19,7 @@ export class GamePlayScene extends Scene {
     static getInstance() {
         if (GamePlayScene.instance == null) {
             GamePlayScene.instance = new GamePlayScene();
-            
+
         }
         GamePlayScene.instance.dot = null;
         return GamePlayScene.instance;
@@ -30,14 +31,14 @@ export class GamePlayScene extends Scene {
     }
 
     dotClick() {
-        this.dotClicked();
         this.dot.destroyDot();
         this.displayDot();
+        this.dotClicked();
     }
 
     dotClicked() {
         this.gameManager.currentDots--;
-        document.getElementById('dot-value').innerText =  this.gameManager.currentDots;
+        document.getElementById('dot-value').innerText = this.gameManager.currentDots;
         this.checkDot(this.gameManager.currentDots);
     }
 
@@ -50,6 +51,7 @@ export class GamePlayScene extends Scene {
     displayGameOver() {
         document.getElementById('ready-text').innerText = '';
         this.readyBackgroundStart();
+        this.dot = null;
         let overScene = GameOverScene.getInstance();
         overScene.stackView();
     }
@@ -94,8 +96,6 @@ export class GamePlayScene extends Scene {
         let scene = this;
         this.dot = new Dot(color[Math.floor(Math.random() * color.length)], this.gameManager.dotSoundVolume);
         let dot = this.dot.createDot();
-        dot.style.top = Math.floor(Math.random() * (this.dot.limited - 10 + 1) + 10) + '%';
-        dot.style.left = Math.floor(Math.random() * (this.dot.limited - 3 + 1) + 3) + '%';
         document.getElementById('dot-zone').appendChild(dot);
 
         dot.addEventListener('mouseup', function () {
@@ -151,6 +151,8 @@ export class GamePlayScene extends Scene {
     }
 
     loadData() {
+        getcRecord();
+
         let dotValue = document.getElementById('dot-value');
         dotValue.innerText = this.gameManager.currentDots;
     }

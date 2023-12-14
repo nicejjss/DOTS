@@ -8,6 +8,8 @@ export class GamePauseScene extends Scene {
 
     constructor(view) {
         super(view);
+        this.gamePlayScene = GamePlayScene.getInstance();
+        this.gameStartScene = GameStartScene.getInstance();
     }
 
     static getInstance() {
@@ -45,15 +47,15 @@ export class GamePauseScene extends Scene {
 
     btnContinueClick() {
         this.destroyStack();
-        let gamePlay = GamePlayScene.getInstance();
-        gamePlay.showReadyBackground()
+        this.gamePlayScene.showReadyBackground()
     }
 
     btnMenuClick() {
         if (confirm('Data will not be saved')) {
             this.destroyStack();
-            let gameStartScene = GameStartScene.getInstance();
-            gameStartScene.loadView();
+            let gamePlay = GamePlayScene.getInstance();
+            gamePlay = null;
+            this.gameStartScene.loadView();
         }
     }
 

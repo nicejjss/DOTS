@@ -28,6 +28,8 @@ export class Dot{
         dot.style.height = this.height;
         dot.style.width = this.width;
         dot.style.backgroundColor = this.color;
+        dot.style.top = Math.floor(Math.random() * (this.limited - 10 + 1) + 10) + '%';
+        dot.style.left = Math.floor(Math.random() * (this.limited - 3 + 1) + 3) + '%';
         dot.id = 'dot';
 
         return dot;
@@ -35,6 +37,8 @@ export class Dot{
 
     destroyDot() {
         let dot = document.getElementById('dot');
-        dot.remove();
+        if (dot) {
+            dot.remove();
+        }   
     }
 }

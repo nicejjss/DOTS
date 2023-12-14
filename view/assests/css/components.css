@@ -24,3 +24,7 @@
     width: 150px;
     flex-grow: 1;
 }
+
+#c-record-dot {
+    margin-right: 20px;
+}

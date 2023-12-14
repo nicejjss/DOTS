@@ -2,6 +2,7 @@ import { Scene } from "./Scene.js";
 import { Dot } from "../music/Dot.js";
 import { GamePlayScene } from "./GamePlayScene.js"
 import { createTitle } from "../../view/assests/js/GameStart.js"
+import { getcRecord } from "../../traits/SceneTraits.js"
 
 export class GameStartScene extends Scene {
 
@@ -66,6 +67,8 @@ export class GameStartScene extends Scene {
     }
 
     loadData() {
+        getcRecord();
+
         let backgroundMusic = document.getElementById('background-music');
         backgroundMusic.value = this.gameManager.backgroundMusicVolume * 100;
 
