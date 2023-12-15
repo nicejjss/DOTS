@@ -8,7 +8,7 @@ export class GameManager {
     //public
     backgroundMusic;
 
-    backgroundMusicVolume = 0.3;
+    backgroundMusicVolume = 0;
     victoryVolume = 0.4;
     dotSoundVolume = 0.7;
     dots = 0;

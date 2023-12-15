@@ -9,6 +9,8 @@
 - DI 
 - Some browsers like Edge or Chrome blocks the auto-play music from JS, must enable first
 
-
+## Google Policy
+- not autoplay background Music unless user interact with window first
+- 
 
 *** Loc Dao Duc ***
