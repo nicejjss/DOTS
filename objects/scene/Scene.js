@@ -32,7 +32,7 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
             scene.viewCustom();
-        },100)
+        },500)
         
     }
 
