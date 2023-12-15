@@ -32,7 +32,7 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
             scene.viewCustom();
-        },500)
+        },100)
         
     }
 
@@ -47,7 +47,7 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
             scene.viewCustom();
-        },500)
+        },100)
     }
 
     destroyStack() {
@@ -60,7 +60,7 @@ export class Scene {
         childView.innerHTML = '';
     }
 
-    viewEvent() {
+    viewEvent(scene) {
 
     }
 

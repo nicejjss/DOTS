@@ -157,8 +157,6 @@ export class GamePlayScene extends Scene {
     }
 
     loadData() {
-        getcRecord();
-
         let dotValue = document.getElementById('dot-value');
         dotValue.innerText = this.gameManager.currentDots;
     }
