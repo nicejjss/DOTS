@@ -32,7 +32,7 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
             scene.viewCustom();
-        },200)
+        },250)
         
     }
 
@@ -47,7 +47,7 @@ export class Scene {
             scene.loadData(scene);
             scene.viewEvent(scene);
             scene.viewCustom();
-        },200)
+        },250)
     }
 
     destroyStack() {
