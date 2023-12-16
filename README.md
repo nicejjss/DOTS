@@ -9,11 +9,9 @@
 
 
 ## what to think:
-- DI
-- Some browsers like Edge or Chrome blocks the auto-play music from JS, must enable first
+- Dependency Injection
 
 ## Google Policy
-- not autoplay background Music unless user interact with window first
-- 
+- not autoplay background Music unless user interact with window first (Google policy)
 
 *** Loc Dao Duc ***
