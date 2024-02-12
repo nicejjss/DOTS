@@ -47,7 +47,7 @@ export class GameOverScene extends Scene {
 
         if (record) {
             let recordStat = this.recordStat(record);
-            if (currentStat > recordStat || record['dots'] <= this.gameManager.dots)
+            if (currentStat > recordStat)
                 Player.save({
                     'dots': this.gameManager.dots,
                     'time': this.gameManager.sec + ':' + this.gameManager.miliSec,

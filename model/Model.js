@@ -1,6 +1,6 @@
 export class Model {
     //local or network
-    connection;
+    connection = 'local';
 
     fields;
 
@@ -9,10 +9,13 @@ export class Model {
      */
     static save(array) {
         let instance = this.getInstance();
-        if (instance.connection == 'local') {
-            let data = this.formatData(array);
-            let jsonData = JSON.stringify(data);
-            localStorage.setItem(this.constructor.name, jsonData);
+
+        switch (instance.connection) {
+            case 'local':
+                let data = this.formatData(array);
+                let jsonData = JSON.stringify(data);
+                localStorage.setItem(this.constructor.name, jsonData);
+                ; break;
         }
     }
 
@@ -23,25 +26,31 @@ export class Model {
     static get(keys = null) {
         let data = {};
         let instance = this.getInstance();
-        if (instance.connection == 'local') {
-            let rawData = localStorage.getItem(this.constructor.name);
-            let jsonData = JSON.parse(rawData)
-            if (keys) {
-                keys.forEach(key => {
-                    data[key] = jsonData[key];
-                });
-            } else {
-                data = jsonData;
-            }
-            return data;
+
+        switch (instance.connection) {
+            case 'local':
+                let rawData = localStorage.getItem(this.constructor.name);
+                let jsonData = JSON.parse(rawData)
+                if (keys) {
+                    keys.forEach(key => {
+                        data[key] = jsonData[key];
+                    });
+                } else {
+                    data = jsonData;
+                }
+                
+                ; break;
         }
 
+        return data;
     }
 
     static delete() {
         let instance = this.getInstance();
-        if (instance.connection == 'local') {
-            localStorage.removeItem(this.constructor.name);
+        switch (instance.connection) {
+            case 'local':
+                localStorage.removeItem(this.constructor.name);
+                ; break;
         }
     }
 
