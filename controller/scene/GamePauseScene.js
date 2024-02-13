@@ -22,10 +22,10 @@ export class GamePauseScene extends Scene {
 
     loadData() {
         let backgroundMusic = document.getElementById('background-music');
-        backgroundMusic.value = this.gameManager.backgroundMusicVolume * 100;
+        backgroundMusic.value = this.gameManager.backgroundMusicVolume ? this.gameManager.backgroundMusicVolume * 100 : 0;
 
         let dotSound = document.getElementById('dot-sound');
-        dotSound.value = this.gameManager.dotSoundVolume * 100;
+        dotSound.value = this.gameManager.dotSoundVolume ?  this.gameManager.dotSoundVolume * 100 : 0;
     }
 
 

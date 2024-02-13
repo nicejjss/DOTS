@@ -68,13 +68,13 @@ export class GameStartScene extends Scene {
 
     loadData() {
         let backgroundMusic = document.getElementById('background-music');
-        backgroundMusic.value = this.gameManager.backgroundMusicVolume * 100;
+        backgroundMusic.value = this.gameManager.backgroundMusicVolume ? this.gameManager.backgroundMusicVolume * 100 : 0;
 
         let dotSound = document.getElementById('dot-sound');
-        dotSound.value = this.gameManager.dotSoundVolume * 100;
+        dotSound.value = this.gameManager.dotSoundVolume ? this.gameManager.dotSoundVolume * 100 : 0;
 
         let btnStart = document.getElementById('dot-number');
-        btnStart.value = this.gameManager.dots;
+        btnStart.value = this.gameManager.dots ?? 0;
 
         getcRecord();
     }
