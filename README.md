@@ -3,7 +3,7 @@
 - Demo: https://dots-sage.vercel.app/
 - Use singleton pattern
 - Import file can call Object
-- MVC architecture (maybe MVP)
+- MVP: Model View Presenter
 - Data save in model like laravel (php)
 
 
