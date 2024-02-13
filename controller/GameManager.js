@@ -18,17 +18,13 @@ export class GameManager {
 
     //private
     constructor() {
-        this.backgroundMusic = BackgroundMusic.getInstance();
-    }
-
-    static getInstance() {
         if (GameManager.instance == null) {
-            GameManager.instance = new GameManager();
+            GameManager.instance = this;
+            GameManager.instance.backgroundMusic = BackgroundMusic.getInstance();
         }
 
         return GameManager.instance;
     }
-
     gameStart() {
         this.startBackgroundMusic();
         let gameStart = GameStartScene.getInstance();
@@ -42,5 +38,5 @@ export class GameManager {
     }
 }
 
-let game = GameManager.getInstance();
+let game = new GameManager();
 game.gameStart();
