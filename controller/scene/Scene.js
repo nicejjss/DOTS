@@ -14,7 +14,7 @@ export class Scene {
     constructor(view) { 
         this.view = view;
         this.sceneName = this.constructor.name;
-        this.gameManager = new GameManager();
+        this.gameManager = GameManager.getInstance();
     }
 
     static getInstance() {
