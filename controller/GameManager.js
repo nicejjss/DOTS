@@ -1,5 +1,8 @@
 import { BackgroundMusic } from "./music/BackgroundMusic.js";
 import { GameStartScene } from "./scene/GameStartScene.js";
+import { GamePlayScene } from "./scene/GamePlayScene.js";
+import { GamePauseScene } from "./scene/GamePauseScene.js";
+import { GameOverScene } from "./scene/GameOverScene.js";
 
 export class GameManager {
     //private
@@ -41,6 +44,11 @@ export class GameManager {
         this.backgroundMusic.autoPlay(true);
     }
 }
+
+let gameStartScene = new GameStartScene();
+let gamePlayScene = new GamePlayScene();
+let gamePauseScene = new GamePauseScene();
+let gameOverScene = new GameOverScene();
 
 let game = GameManager.getInstance();
 game.gameStart();
