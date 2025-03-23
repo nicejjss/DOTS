@@ -5,7 +5,7 @@ import { Player } from "../../model/Player.js";
 import { GamePlayScene } from "./GamePlayScene.js";
 
 export class GameOverScene extends Scene {
-    view = '../../view/gameOver.html';
+    view = '/view/gameOver.html';
     victoryMusic;
 
     constructor(view) {

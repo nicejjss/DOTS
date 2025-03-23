@@ -4,7 +4,7 @@ import { GamePlayScene } from "./GamePlayScene.js";
 import { GameStartScene } from "./GameStartScene.js";
 
 export class GamePauseScene extends Scene {
-    view = '../../view/gamePause.html';
+    view = '/view/gamePause.html';
 
     constructor(view) {
         super(view);

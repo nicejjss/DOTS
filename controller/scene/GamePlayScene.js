@@ -7,7 +7,7 @@ import { getcRecord } from "../../traits/SceneTraits.js";
 
 export class GamePlayScene extends Scene {
 
-    view = '../view/gamePlay.html';
+    view = '/view/gamePlay.html';
     gameRunning = flagOff;
     dot;
 
