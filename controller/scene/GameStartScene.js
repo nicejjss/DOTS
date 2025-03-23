@@ -6,7 +6,7 @@ import { getcRecord } from "../../traits/SceneTraits.js"
 
 export class GameStartScene extends Scene {
 
-    view = '../../view/gameStart.html';
+    view = '../view/gameStart.html';
 
     constructor(view) {
         super(view);
