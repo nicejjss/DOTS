@@ -1,6 +1,6 @@
 # DOTS
 - This is the click game name dot create with OOP
-- Demo: https://dots-sage.vercel.app/
+- Demo: [https://dots-sage.vercel.app/](https://dots-beta.vercel.app/)
 - Use singleton pattern mostly use static method
 - Import file can call Object
 - MVP: Model - View - Presenter (Model - View - Controller)
