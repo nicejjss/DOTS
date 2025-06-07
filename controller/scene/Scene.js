@@ -30,8 +30,8 @@ export class Scene {
         $( "#child-view" ).load(this.view);
         setTimeout(function(){
             scene.loadData(scene);
-            scene.viewEvent(scene);
             scene.viewCustom();
+            scene.viewEvent(scene);
         },250)
         
     }
@@ -45,8 +45,8 @@ export class Scene {
         $( "#stack-view" ).load(this.view);
         setTimeout(function(){
             scene.loadData(scene);
-            scene.viewEvent(scene);
             scene.viewCustom();
+            scene.viewEvent(scene);
         },250)
     }
 
